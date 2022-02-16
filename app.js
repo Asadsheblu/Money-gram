@@ -1,5 +1,7 @@
 document.getElementById('calculate').addEventListener('click',function(){
    getTotals('balance')
+  
+  
 })
 function getInputId(id){
     const inputId=   document.getElementById(id)
@@ -7,7 +9,7 @@ function getInputId(id){
  }
 
 
- 
+
 function getTotals(id){
         
     const income=getInputId('income').value ;
@@ -15,14 +17,14 @@ function getTotals(id){
         const food=getInputId('food').value ;
         const rent=getInputId('rent').value ;
         const clothes=getInputId('clothes').value ;
-        const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
-        const totalExpense=getInputId('total-expense')
-        totalExpense.innerText=expense
-       let balance=getInputId(id)
-       return  balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+   const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
+          const totalExpense=getInputId('total-expense')
+            totalExpense.innerText=expense
+           let balance=getInputId(id)
+           return  balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+          
     }
-   
-
+    
 //save
 document.getElementById('save').addEventListener('click',function(){
   
@@ -30,14 +32,25 @@ document.getElementById('save').addEventListener('click',function(){
    
  
   const saveValue=getInputId('save-value').value
-   const  totaSaveValue=  parseFloat (saveValue)/100
-  const saveMoney=( parseFloat (getTotalExpense) * totaSaveValue)
-    const savingAmount=getInputId('saving-amount')
-    savingAmount.innerText=saveMoney
+  if(saveValue>0 ||isNaN(saveValue) ){
+    const  totaSaveValue=  parseFloat (saveValue)/100
+    const saveMoney=( parseFloat (getTotalExpense) * totaSaveValue)
+      const savingAmount=getInputId('saving-amount')
+      savingAmount.innerText=saveMoney;
+      
+      const remainingBalance=getInputId('remaining-balance')
+      remainingBalance.innerText=balance.innerText-savingAmount.innerText
+  }
+  else{
+      alert('please give postive number at least up 0')
+  }
+   
 
-        const remainingBalance=getInputId('remaining-balance')
-        remainingBalance.innerText=balance.innerText-savingAmount.innerText
 })
+
+
+    
+
 
 
  
