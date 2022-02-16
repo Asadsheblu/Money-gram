@@ -10,8 +10,48 @@
 </head>
 <body>
     <header>
-        <h1 class="text-center">Money Gram</h1>
-        
+        <h1 class="text-center mt-5">Money Gram</h1>
+        <section class="container">
+            <div class="row mt-5">
+                <div class="col-md-6 bg-light">
+                    <img width="550px " height="550px" src="image/Money (1).jpg" alt="" srcset="">
+
+                </div>
+                <div class="col-md-6 ">
+                    <div class="bg-light ms-2 text-center fw-bold">
+                        <h5>Income</h5>
+                        <label for="">Income:</label>
+                        <input id="income" type="text">
+                       <!--  Expenses -->
+                      
+                        <h5 class="m-3" >Expenses</h5>
+                        <div class="ms-4 m-2">
+                        <label for="">Food:</label>
+                        <input id="food" class="m-2"  type="text">
+                        <br>
+                        <label for="">Rent:</label>
+                        <input id="rent" type="text">
+                        <br>
+                        <label for="">Clothes:</label>
+                        <input id="clothes" class="m-2" type="text">
+                        <br>
+                        <button id="calculate" class="btn btn-info ms-5">Calculate</button>
+                        <h5 class="mt-4">Total Expenses: <span id="total-expense">0</span>  </h5>
+                        <h5>Balance: <span id="balance">0</span> </h5>
+                    </div>
+                   <!--  save money -->
+                   <label for="">Save:</label>
+                   <input id="save-value" style="width: 50px;" type="text">
+                   <span>%</span>
+                   <button id="save" class="btn btn-info w-25">Save</button>
+                   <h5 class="mt-4">Saving Amount: <span id="saving-amount">0</span></h5>
+                   <h5>Remaining Balance: <span id="remaining-balance">0</span></h5>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
     </header>
+    <script src="app.js"></script>
 </body>
 </html>
