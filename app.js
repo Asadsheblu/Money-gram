@@ -23,10 +23,16 @@ function getTotals(id){
             totalExpense.innerText=expense 
             if(income>expense){
               let balance=getInputId(id)
-               balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+              balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+
+              
+              
             }
            else{
-              alert('Expenditure has increased due to income. Please reduce expenses')
+            
+               alert('Expenditure has increased due to income. Please reduce expenses')
+               
+               
             }
           
            
@@ -37,23 +43,41 @@ function getTotals(id){
 document.getElementById('save').addEventListener('click',function(){
   
   const income=getInputId('income').value 
- 
+ let totalBalance=document.getElementById('balance').innerText
+
   const saveValue=getInputId('save-value').value
-  if(saveValue>0 && saveValue<=100 ){
-    const  totaSaveValue=  parseFloat (saveValue)/100
-    const saveMoney=( parseFloat (income) * totaSaveValue)
-      const savingAmount=getInputId('saving-amount')
-      
-      savingAmount.innerText=saveMoney.toFixed(2);
-      
-      const remainingBalance=getInputId('remaining-balance')
-     
-        remainingBalance.innerText= (balance.innerText-savingAmount.innerText).toFixed(2)
-      
-  }
-  else{
-        alert('please provide positive number up 0')
-  }  
+  
+    if(saveValue>0 && saveValue<=100 ){
+      const  totaSaveValue=  parseFloat (saveValue)/100
+      const saveMoney=( parseFloat (income) * totaSaveValue)
+        const savingAmount=getInputId('saving-amount')
+        
+        savingAmount.innerText=saveMoney;
+        const remainingBalance=getInputId('remaining-balance')
+       if(totalBalance<savingAmount.innerText){
+       alert('Saving money out of your total balance. Please reduce saving money.')
+       
+        
+       }
+        else{
+          remainingBalance.innerText= (balance.innerText-savingAmount.innerText)
+       
+        }
+        
+       
+       
+        
+       
+        
+        
+    }
+    else{
+          alert('please provide positive number greater than 0 less than 100')
+    }  
+    
+  
+  
+ 
 
 })
 
