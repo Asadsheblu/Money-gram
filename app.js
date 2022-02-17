@@ -1,15 +1,16 @@
+//calculate button click handeler add
 document.getElementById('calculate').addEventListener('click',function(){
    getTotals('balance')
   
   
 })
+//function for common id
 function getInputId(id){
-    const inputId=   document.getElementById(id)
-       return inputId
- }
-
-
-
+    const inputId=   document.getElementById(id) 
+      return inputId  
+  }
+      
+//id add and set value using function
 function getTotals(id){
         
     const income=getInputId('income').value ;
@@ -19,32 +20,40 @@ function getTotals(id){
         const clothes=getInputId('clothes').value ;
    const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
           const totalExpense=getInputId('total-expense')
-            totalExpense.innerText=expense
-           let balance=getInputId(id)
-           return  balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+            totalExpense.innerText=expense 
+            if(income>expense){
+              let balance=getInputId(id)
+               balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+            }
+           else{
+              alert('Expenditure has increased due to income. Please reduce expenses')
+            }
+          
+           
           
     }
     
-//save
+//save money function
 document.getElementById('save').addEventListener('click',function(){
   
-   let getTotalExpense= getTotals('balance')
-   
+  const income=getInputId('income').value 
  
   const saveValue=getInputId('save-value').value
-  if(saveValue>0 ||isNaN(saveValue) ){
+  if(saveValue>0 && saveValue<=100 ){
     const  totaSaveValue=  parseFloat (saveValue)/100
-    const saveMoney=( parseFloat (getTotalExpense) * totaSaveValue)
+    const saveMoney=( parseFloat (income) * totaSaveValue)
       const savingAmount=getInputId('saving-amount')
-      savingAmount.innerText=saveMoney;
+      
+      savingAmount.innerText=saveMoney.toFixed(2);
       
       const remainingBalance=getInputId('remaining-balance')
-      remainingBalance.innerText=balance.innerText-savingAmount.innerText
+     
+        remainingBalance.innerText= (balance.innerText-savingAmount.innerText).toFixed(2)
+      
   }
   else{
-      alert('please give postive number at least up 0')
-  }
-   
+        alert('please provide positive number up 0')
+  }  
 
 })
 
