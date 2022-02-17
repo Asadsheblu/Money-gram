@@ -20,24 +20,21 @@ function getTotals(id){
         const clothes=getInputId('clothes').value ;
    const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
           const totalExpense=getInputId('total-expense')
-             
+          //error handeling for NaN
+             if( (food=="" && food<0) || (income==""&&income<0) ||(rent==""&&rent<0)||(clothes==""&&clothes<0)){
+                return alert('please fill up this value and use postive number')
+             }
+
+             /* error handeler for Expenditure has increased due to income. Please reduce expenses */
             if(income<expense){
-              
-              return alert('Expenditure has increased due to income. Please reduce expenses')
-              
+              return alert('Expenditure has increased due to income. Please reduce expenses') 
              
-              
-              
             }
-           else{
-            totalExpense.innerText=expense
-            let balance=getInputId(id)
-            balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
-               
-               
-            }
-          
-           
+           else{ 
+                    totalExpense.innerText=expense
+                    let balance=getInputId(id)
+                    balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
+            }  
           
     }
     
@@ -49,32 +46,32 @@ document.getElementById('save').addEventListener('click',function(){
 
   const saveValue=getInputId('save-value').value
   
-    if(saveValue>0 && saveValue<=100 ){
-      const  totaSaveValue=  parseFloat (saveValue)/100
-      const saveMoney=( parseFloat (income) * totaSaveValue)
-        const savingAmount=getInputId('saving-amount')
-        
-        savingAmount.innerText=saveMoney;
-        const remainingBalance=getInputId('remaining-balance')
-       if(totalBalance<savingAmount.innerText){
-       alert('Saving money out of your total balance. Please reduce saving money.')
-       
-        
-       }
-        else{
-          remainingBalance.innerText= (balance.innerText-savingAmount.innerText)
-       
-        }   
-        
-        
-    }
-    else{
-          alert('please provide positive number greater than 0 less than 100')
-    }  
     
+  if(saveValue>0 && saveValue<=100 || saveValue!=='' ){
+    const  totaSaveValue=  parseFloat (saveValue)/100
+    const saveMoney=( parseFloat (income) * totaSaveValue)
+      const savingAmount=getInputId('saving-amount')
+      
+      savingAmount.innerText=saveMoney;
+      const remainingBalance=getInputId('remaining-balance')
+     if(totalBalance<savingAmount.innerText){
+     alert('Saving money out of your total balance. Please reduce saving money.')
+     
+      
+     }
+      else{
+        remainingBalance.innerText= (balance.innerText-savingAmount.innerText)
+     
+      }   
+      
+      
+  }
+  else{
+        alert('please provide positive number greater than 0 less than 100')
+  }  
   
-  
- 
+
+
 
 })
 
