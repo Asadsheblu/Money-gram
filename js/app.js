@@ -6,10 +6,9 @@ document.getElementById('calculate').addEventListener('click',function(){
 })
 //function for common id
 function getInputId(id){
-    const inputId=   document.getElementById(id) 
-      return inputId  
-  }
-      
+  const inputId=   document.getElementById(id) 
+    return inputId  
+}
 //id add and set value using function
 function getTotals(id){
         
@@ -21,11 +20,11 @@ function getTotals(id){
    const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
           const totalExpense=getInputId('total-expense')
           //error handeling for NaN
-             if( (food=="" || food<0) || (income==""||income<0) ||(rent==""||rent<0)||(clothes==""||clothes<0)){
-                return alert('please fill up this value and use postive number')
-             }
+          if( (food=="" || food<0) || (income==""||income<0) ||(rent==""||rent<0)||(clothes==""||clothes<0)){
+            return alert('please fill up this value and use postive number')
+         }
 
-             /* error handeler for Expenditure has increased due to income. Please reduce expenses */
+
             if(income<expense){
               return alert('Expenditure has increased due to income. Please reduce expenses') 
              
@@ -47,28 +46,33 @@ document.getElementById('save').addEventListener('click',function(){
   const saveValue=getInputId('save-value').value
   
     
-  if(saveValue>0 && saveValue<=100 || saveValue!=='' ){
-    const  totaSaveValue=  parseFloat (saveValue)/100
+  if(saveValue>=100 ||saveValue<0  || saveValue=='' ){
+    alert('please provide positive number greater than 0 less than 100')
+
+  }
+    
+  else{
+        
+        const  totaSaveValue=  parseFloat (saveValue)/100
     const saveMoney=( parseFloat (income) * totaSaveValue)
       const savingAmount=getInputId('saving-amount')
       
-      savingAmount.innerText=saveMoney;
-      const remainingBalance=getInputId('remaining-balance')
-     if(totalBalance<savingAmount.innerText){
-      return  alert('Saving money out of your total balance. Please reduce saving money.')
      
+      const remainingBalance=getInputId('remaining-balance')
+     if(totalBalance<saveMoney){
+      return  alert('Saving money out of your total balance. Please reduce saving money.')
       
      }
       else{
+        savingAmount.innerText=saveMoney;
         remainingBalance.innerText= (balance.innerText-savingAmount.innerText)
      
       }   
+
       
       
   }
-  else{
-        alert('please provide positive number greater than 0 less than 100')
-  }  
+  
   
 
 
@@ -80,4 +84,5 @@ document.getElementById('save').addEventListener('click',function(){
 
 
 
+   
  
