@@ -21,7 +21,7 @@ function getTotals(id){
    const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
           const totalExpense=getInputId('total-expense')
           //error handeling for NaN
-             if( (food=="" && food<0) || (income==""&&income<0) ||(rent==""&&rent<0)||(clothes==""&&clothes<0)){
+             if( (food=="" || food<0) || (income==""||income<0) ||(rent==""||rent<0)||(clothes==""||clothes<0)){
                 return alert('please fill up this value and use postive number')
              }
 
@@ -55,7 +55,7 @@ document.getElementById('save').addEventListener('click',function(){
       savingAmount.innerText=saveMoney;
       const remainingBalance=getInputId('remaining-balance')
      if(totalBalance<savingAmount.innerText){
-     alert('Saving money out of your total balance. Please reduce saving money.')
+      return  alert('Saving money out of your total balance. Please reduce saving money.')
      
       
      }
