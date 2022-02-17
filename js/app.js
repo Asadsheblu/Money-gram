@@ -20,17 +20,17 @@ function getTotals(id){
         const clothes=getInputId('clothes').value ;
    const expense=parseFloat(food)+parseFloat(rent)+parseFloat(clothes)
           const totalExpense=getInputId('total-expense')
-            totalExpense.innerText=expense 
+             
             if(income<expense){
-
-              alert('Expenditure has increased due to income. Please reduce expenses')
               
-              return
+              return alert('Expenditure has increased due to income. Please reduce expenses')
+              
+             
               
               
             }
            else{
-            
+            totalExpense.innerText=expense
             let balance=getInputId(id)
             balance.innerText= parseInt (income)- parseInt (totalExpense.innerText)
                
